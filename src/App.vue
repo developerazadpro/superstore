@@ -6,10 +6,10 @@
       <div class="container">
         <div class="row">
             <div class="col-sm-9">
-                <Inventory :items="items"></Inventory>
+                <Inventory @newItemAdded='addCartItem' :items="items"></Inventory>
             </div>
             <div class="col-sm-3 card-item">
-                <Cart></Cart>
+                <Cart :items="cart"></Cart>
             </div>
         </div>
         
@@ -34,12 +34,19 @@
 
     data(){
       return{
-        items: []
+        items: [],
+        cart:[]
       }
     },
 
     mounted(){
       this.items = data
+    },
+
+    methods:{
+      addCartItem(item){
+        this.cart.push(item)
+      }
     }
   }
 </script>

@@ -4,8 +4,8 @@
             <img :src="item.photo" class="card-img-top" alt="cart-img">
             <div class="card-body">
             <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.price }}</p>
-            <a href="#" class="btn btn-primary">Add to Cart</a>
+            <p class="card-text">${{ item.price }}</p>
+            <a @click="addItemToCart(item)" class="btn btn-primary text-white">Add to Cart</a>
             </div>
         </div>
     </div>
@@ -13,7 +13,12 @@
 
 <script>
 export default {
-    props:['items']
+    props:['items'],
+    methods:{
+        addItemToCart(item){
+            this.$emit('newItemAdded', item)
+        }
+    }
 }
 </script>
 
