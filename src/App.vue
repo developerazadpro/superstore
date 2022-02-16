@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
             <div class="col-sm-9">
-                <Inventory></Inventory>
+                <Inventory :items="items"></Inventory>
             </div>
             <div class="col-sm-3 card-item">
                 <Cart></Cart>
@@ -21,6 +21,7 @@
   import Navbar from './components/Navbar'
   import Inventory from './components/Inventory'
   import Cart from './components/Cart'
+  import data from './data.js'
 
   export default {
     name: 'app',
@@ -29,6 +30,16 @@
       Navbar,
       Inventory,
       Cart
+    },
+
+    data(){
+      return{
+        items: []
+      }
+    },
+
+    mounted(){
+      this.items = data
     }
   }
 </script>
