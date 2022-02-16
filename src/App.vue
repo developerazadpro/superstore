@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       
-      <Navbar></Navbar>
+      <Navbar @search='search'></Navbar>
 
       <div class="container">
         <div class="row">
@@ -44,6 +44,11 @@
     },
 
     methods:{
+      search(keyword){
+        this.items = data.filter(item =>{
+          return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+        })
+      },
       addCartItem(item){
         this.cart.push(item)
       },
